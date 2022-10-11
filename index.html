@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="icon" href="icon.jpg">
+        <title>NOISE</title>
+
+        <!--Bootstrap CDN -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    </head>
+    <body onload="loadProductCatalog()">
+        <!--Navigation with Brand Name-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand">Noise</a>
+            </div>
+        </nav>
+        <!--Navigation end-->
+
+        <!-- Ad Banner / Hero Banner -->
+        <div class="row">
+            <div class="col-lg-6 col-sm-12">
+                <img src="https://cdn.shopify.com/s/files/1/0997/6284/files/image_2022_09_05T08_10_42_214Z_1_1500x.png?v=1662366040" alt="Smart Band" style="width:120%;">
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <div class="container">
+                    <h4 class="text-center" style="margin-top:100px ;"><b>NOISE</b><span style="font-size:20px;"> Colorgrand</span></h4>
+
+                    <p class="text-center">Wearable Watch Brand</p>
+
+
+                    <p class="text-center">
+                        <button class="btn btn-primary" onclick="adClick()">Buy Now!</button>&nbsp 
+                        <a href="">View Details</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Ad Banner / Hero Banner End -->   
+        
+        <hr>
+        
+        <!--Product Catalog -->
+        <div class="container">
+            <h2 class="text-center">Product Catalog</h2>
+
+            <br>
+
+            <div class="row" id="productCatalog">
+            </div>
+        </div>
+        <!--Product Catalog End -->
+
+        <hr>
+
+        <!--Contact-->
+        <div class="container">
+            <h2 class="text-center">Contact Us</h2>
+            <br>
+            <div class="row">
+                <div class="col-lg-5">
+                    <br> E-mail:<b>adityayalse@gmail.com</b><br>
+                    Mobile:<b>+91 8762338315</b><br>
+                    Address:Noise Store<br>
+                            Near Jog Bustand<br>
+                            Court Rode<br>
+                            Sagar<br>
+                            Pin-577401
+                    <br><br>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d469.7065953671719!2d75.02218461189858!3d14.16733004818623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1662405752004!5m2!1sen!2sin" width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="col-lg-7">
+                    <h5>Please fill the details</h5>
+                    <p>
+                        <label>Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter Your Name">
+                        <span style="color:red" id="errNameMessage"></span>
+                    </p>
+                    <p>
+                        <label>Email</label>
+                        <input type="text" class="form-control" id="email" placeholder="Enter Your Email">
+                        <span style="color: red;" id="errEmailMessage"></span>
+                    </p>
+                    <p>
+                        <label>Mobile</label>
+                        <input type="text" class="form-control" id="mobile" maxlength="10" placeholder="Enter Your Phone Number">
+                        <span style="color: red;" id="errMobileMessage"></span>
+                    </p>
+                    <p>
+                        <label>Comments</label>
+                        <textarea id="comments" class="form-control" placeholder=""></textarea>
+                        <span style="color: red;" id="errCommentsMessage"></span>
+                    </p>
+                    <button class="btn btn-primary" style="width: 100%;" onclick="return validateForm()">Submit</button>
+                </div>
+            </div>
+        </div>
+        <!--Contact End-->
+
+        <script>
+            function validateForm()
+            {
+                // Get Value From Name
+                var name = document.getElementById('name').value
+
+                // Check if name is empty or not 
+                if(name == "")
+                {
+                    document.getElementById('errNameMessage').innerHTML = 'Please Enter Name'
+                    return false
+                }
+                else
+                {
+                    document.getElementById('errNameMessage').innerHTML = ''
+                }
+
+                // Check if valid name or not
+                var regxName = /^[A-Za-z ]+$/
+                var validName = name.match(regxName)
+
+                if(!validName)
+                {
+                    document.getElementById('errNameMessage').innerHTML = 'Please Enter Valid Name'
+                    return false
+                }
+                else
+                {
+                    document.getElementById('errNameMessage').innerHTML = ''
+                }
+
+                // Get Value from Email
+                var email = document.getElementById('email').value
+
+                // Check if Email is empty or not
+                if(email == "")
+                {
+                    document.getElementById('errEmailMessage').innerHTML = 'Please Enter mail'
+                    return false
+                }
+                else
+                {
+                    document.getElementById('errEmailMessage').innerHTML = ''
+                }
+
+                // Validate Email
+                var regxEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+                var validEmail = email.match(regxEmail)
+
+                if(!validEmail)
+                {
+                    document.getElementById('errEmailMessage').innerHTML = 'Please Enter Valid Email'
+                    return false
+                }
+                else
+                {
+                    document.getElementById('errEmailMessage').innerHTML = ''
+                }
+
+                // Get Value From Mobile
+                var mobile = document.getElementById('mobile').value
+
+                // Check if mobile is empty or not 
+                if(mobile == "")
+                {
+                    document.getElementById('errMobileMessage').innerHTML = 'Please Enter Mobile'
+                    return false
+                }
+                else
+                {
+                    document.getElementById('errMobileMessage').innerHTML = ''
+                }
+
+                // Valid Mobile Number
+                var regxMobile = /^[0-9]+$/;
+                var validMobile = mobile.match(regxMobile)
+
+                if(!validMobile) 
+                {
+                    document.getElementById('errMobileMessage').innerHTML = 'Please Enter Valid Mobile'
+                    return false;
+                }
+                else
+                {
+                    document.getElementById('errMobileMessage').innerHTML = ''
+                }
+
+                // Get Value From The Comments
+                var comments = document.getElementById('comments').value
+
+                if(comments) // Only if comments are written
+                {
+                    var regxComments = /^[A-Za-z0-9-,#. ]+$/;
+                    var validComments = comments.match(regxComments)
+
+                    if(!validComments)
+                    {
+                        document.getElementById('errCommentsMessage').innerHTML = 'Alphanumeric ,-.# are allowed'
+                        return false
+                    }
+                    else
+                    {
+                        document.getElementById('errCommentsMessage').innerHTML = ''
+                    }
+                }   
+
+                /* AJAX Code Start  */
+                var xhttpContactData = new XMLHttpRequest()
+                xhttpContactData.onreadystatechange = function()
+                {
+                    if(this.readyState == 4 && this.status == 200)
+                    {
+                        console.log(this.responseText);
+                    }
+                };
+                xhttpContactData.open('POST','http://localhost:5000/contact-data',true)
+                xhttpContactData.setRequestHeader('Content-type','application/x-www-form-urlencoded')
+                xhttpContactData.send('name='+name+'&email='+email+'&mobile='+mobile+'&comments='+comments)
+
+                /* AJAX Code End */
+
+            }
+            // Validate Form Function Ends Here
+
+            /* Ad Click Function */
+            function adClick()
+            {
+                /* AJAX Code Start  */
+                var xhttpAdClick = new XMLHttpRequest()
+                xhttpAdClick.onreadystatechange = function()
+                {
+                    if(this.readyState == 4 && this.status == 200)
+                    {
+                        console.log(this.responseText)
+                    }
+                }
+                xhttpAdClick.open('GET','http://localhost:5000/ad-clicks',true)
+                xhttpAdClick.send()
+
+                /* AJAX Code End */
+            }
+            /* End Ad Click Function */
+
+            /* Product Click Function */
+            function productClick()
+            {
+                /* AJAX Code Start  */
+                var xhttpProductClick = new XMLHttpRequest()
+                xhttpProductClick.onreadystatechange = function()
+                {
+                    if(this.readyState == 4 && this.status == 200)
+                    {
+                        console.log(this.responseText)
+                    }
+                };
+                xhttpProductClick.open('POST','<api url goes here>',true)
+                xhttpProductClick.send()
+                /* AJAX Code End */
+            }
+            /* End Product Click Function */
+
+            /* Load Product Catalog */
+            function loadProductCatalog()
+            {
+                /* AJAX Code start  */
+                var xhttpProducts = new XMLHttpRequest()
+                xhttpProducts.onreadystatechange = function()
+                {
+                    if(this.readyState == 4 && this.status == 200)
+                    {
+                        var productCode = ''
+
+                        var jsonData = JSON.parse(this.responseText)
+                        var jsonDataLength = jsonData.length
+
+                        for(var i = 0;i< jsonDataLength;i++)
+                        {
+                            productCode+= '<div class="col-lg-3 col-sm-12">'
+                            productCode+= '<div class="card" style="width: 100%;">'
+                            productCode+= '<img src="'+jsonData[i].image_url+'" style="width:100%">'
+                            productCode+= '<div class="card-body">';
+                            productCode+= '<h4 class="card-title">'+jsonData[i].product_title+'</h4>'
+                            productCode+= '<p class="card-text">'
+                            productCode+= jsonData[i].product_description
+                            productCode+= '</p>'
+                            productCode+= '<button class="btn btn-primary" style="width: 100%;" onclick="productClick()">Add to Cart</button><br><br>'
+                            productCode+='<button class="btn btn-primary" style="width:100%;">Buy Now</button>'
+                            productCode+= '</div>'
+                            productCode+= '</div>'
+                            productCode+= '</div>'
+                        }
+
+                        document.getElementById('productCatalog').innerHTML = productCode
+
+                    }
+                };
+                xhttpProducts.open('GET','http://localhost:5000/products',true)
+                xhttpProducts.send()
+                /* AJAX Code End */
+            }
+            /* Load Product Catalog Ends */
+            </script>
+        <!-- Footer -->
+        <footer class="py-5 bg-dark">
+            <div class="container">
+                <p class="m-0 text-center text-white">Copyright &copy; Noise 2022</p>
+            </div>
+        <!-- /.container -->
+        </footer>
+    </body>
+</html>
